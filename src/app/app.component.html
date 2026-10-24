@@ -1,24 +1,28 @@
-<main>
-  <h1>{{ nomApp }}</h1>
-  <p>
-    Eric Expósito. Aplicació per consultar i organitzar receptes de cuina.
-  </p>
+<div class="contenidor">
+  <header class="capcalera">
+    <h1>{{ nomApp }}</h1>
+    <p>Eric Expósito Torres. Consulta i filtra les receptes de cuina del receptari.</p>
+  </header>
 
-  <article class="targeta">
-    <h2>Dades del projecte</h2>
-    <ul>
-      <li>Projecte: ioc-angular-receptari-eric-exposito</li>
-      <li>Alumne: Eric Expósito</li>
-      <li>Framework: Angular</li>
-      <li>Branca: ra1-setup</li>
-    </ul>
-  </article>
+  <app-recepta-filters (filtresAplicats)="onFiltresAplicats($event)" />
 
-  <aside>
-    <p>Nota: la nostra personalització inicial es treballa en la branca ra1-setup. reload</p>
-  </aside>
-  <p>Projecte base llest</p>
+  <div class="cos">
+    <main id="contingut-principal" class="principal">
+      <app-recepta-list
+        [receptes]="receptesFiltrades"
+        [idSeleccionada]="receptaActual?.id ?? null"
+        (receptaSeleccionada)="onReceptaSeleccionada($event)" />
+    </main>
 
-</main>
+    <aside class="lateral">
+      <h2>Recepta seleccionada</h2>
+      @if (receptaActual) {
+        <p>{{ receptaActual.titol }}</p>
+      } @else {
+        <p>Cap recepta seleccionada.</p>
+      }
+    </aside>
+  </div>
+</div>
 
 <router-outlet />

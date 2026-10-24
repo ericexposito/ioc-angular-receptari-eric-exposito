@@ -1,0 +1,17 @@
+<article class="targeta" [class.seleccionada]="seleccionada">
+  <header class="capcalera">
+    <h3>{{ recepta.titol }}</h3>
+    <app-categoria-badge [categoria]="recepta.categoria" />
+  </header>
+
+  <p>{{ recepta.descripcio }}</p>
+  <p class="temps">Temps de preparació: {{ recepta.tempsPreparacio }} min</p>
+
+  @if (recepta.destacada) {
+    <p class="destacada">★ Recepta destacada</p>
+  }
+
+  <button type="button" (click)="onSeleccionar()">
+    {{ seleccionada ? 'Seleccionada' : 'Veure detall' }}
+  </button>
+</article>

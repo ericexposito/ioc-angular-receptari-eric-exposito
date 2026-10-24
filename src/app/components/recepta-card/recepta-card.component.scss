@@ -1,0 +1,59 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.targeta {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 8px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.targeta.seleccionada {
+  border: 2px solid #1a5fb4;
+  background: #f0f6ff;
+}
+
+.capcalera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  overflow-wrap: break-word;
+}
+
+p {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.temps {
+  color: #444444;
+  font-size: 0.9rem;
+}
+
+.destacada {
+  color: #7a4b00;
+  font-weight: bold;
+}
+
+button {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 6px 14px;
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+<section class="llista">
+    @for (recepta of receptes; track recepta.id) {
+      <app-recepta-card
+        [recepta]="recepta"
+        [seleccionada]="recepta.id === idSeleccionada"
+        (seleccionar)="onSeleccionar($event)" />
+    }
+</section>

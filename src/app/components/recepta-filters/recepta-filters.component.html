@@ -1,0 +1,18 @@
+<form class="filtres" (ngSubmit)="aplicar()">
+    <div class="camp">
+      <label for="filtre-text">Cerca per text</label>
+      <input id="filtre-text" name="text" type="text" [(ngModel)]="text" placeholder="Ex.: crema">
+    </div>
+  
+    <div class="camp">
+      <label for="filtre-categoria">Categoria</label>
+      <select id="filtre-categoria" name="categoria" [(ngModel)]="categoria">
+        <option value="">Totes</option>
+        @for (cat of categories; track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+  
+    <button type="submit">Aplica filtres</button>
+</form>
