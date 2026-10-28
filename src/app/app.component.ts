@@ -1,14 +1,22 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FiltresRecepta } from './models/filtres-recepta.model';
 import { Recepta } from './models/recepta.model';
 import { RECEPTES } from './models/receptes.mock';
+import { CategoriaBadgeComponent } from './components/categoria-badge/categoria-badge.component';
 import { ReceptaFiltersComponent } from './components/recepta-filters/recepta-filters.component';
 import { ReceptaListComponent } from './components/recepta-list/recepta-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ReceptaFiltersComponent, ReceptaListComponent],
+  imports: [
+    RouterOutlet,
+    DatePipe,
+    CategoriaBadgeComponent,
+    ReceptaFiltersComponent,
+    ReceptaListComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -26,12 +26,29 @@
 }
 
 .principal {
-  flex: 1 1 480px;
+  flex: 3 1 480px;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comptador {
+  margin: 0;
+  font-weight: bold;
+}
+
+.sense-resultats {
+  margin: 0;
+  padding: 16px;
+  background: #fdecea;
+  border-left: 4px solid #b00020;
+  border-radius: 4px;
+  color: #5f0a14;
 }
 
 .lateral {
-  flex: 1 1 240px;
+  flex: 1 1 260px;
   align-self: flex-start;
   padding: 16px;
   background: #fff8e1;
@@ -42,4 +59,47 @@
 .lateral h2 {
   margin-top: 0;
   font-size: 1.1rem;
+}
+
+.detall {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detall h3 {
+  margin: 0;
+}
+
+.detall p {
+  margin: 0;
+}
+
+.detall h4 {
+  margin: 8px 0 0;
+}
+
+.detall ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
+.destacada {
+  color: #7a4b00;
+  font-weight: bold;
 }

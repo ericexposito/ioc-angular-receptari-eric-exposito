@@ -8,18 +8,55 @@
 
   <div class="cos">
     <main id="contingut-principal" class="principal">
-      <app-recepta-list
-        [receptes]="receptesFiltrades"
-        [idSeleccionada]="receptaActual?.id ?? null"
-        (receptaSeleccionada)="onReceptaSeleccionada($event)" />
+      <p class="comptador" role="status">
+        @if (receptesFiltrades.length === 1) {
+          1 recepta trobada
+        } @else {
+          {{ receptesFiltrades.length }} receptes trobades
+        }
+      </p>
+
+      @if (receptesFiltrades.length > 0) {
+        <app-recepta-list
+          [receptes]="receptesFiltrades"
+          [idSeleccionada]="receptaActual?.id ?? null"
+          (receptaSeleccionada)="onReceptaSeleccionada($event)" />
+      } @else {
+        <p class="sense-resultats" role="status">
+          No s'ha trobat cap recepta amb aquests filtres. Prova de canviar la cerca o prem "Restableix".
+        </p>
+      }
     </main>
 
     <aside class="lateral">
-      <h2>Recepta seleccionada</h2>
+      <h2>Detall de la recepta</h2>
+
       @if (receptaActual) {
-        <p>{{ receptaActual.titol }}</p>
+        <article class="detall">
+          <h3>{{ receptaActual.titol }}</h3>
+          <app-categoria-badge [categoria]="receptaActual.categoria" />
+          <p>{{ receptaActual.descripcio }}</p>
+
+          <dl>
+            <dt>Temps de preparació</dt>
+            <dd>{{ receptaActual.tempsPreparacio }} min</dd>
+            <dt>Data de creació</dt>
+            <dd>{{ receptaActual.dataCreacio | date: 'dd/MM/yyyy' }}</dd>
+          </dl>
+
+          <h4>Ingredients</h4>
+          <ul>
+            @for (ingredient of receptaActual.ingredients; track ingredient) {
+              <li>{{ ingredient }}</li>
+            }
+          </ul>
+
+          @if (receptaActual.destacada) {
+            <p class="destacada">★ Recepta destacada</p>
+          }
+        </article>
       } @else {
-        <p>Cap recepta seleccionada.</p>
+        <p>Selecciona una recepta per veure'n el detall.</p>
       }
     </aside>
   </div>
