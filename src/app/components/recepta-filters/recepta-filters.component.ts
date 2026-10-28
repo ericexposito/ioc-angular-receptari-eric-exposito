@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CATEGORIES_RECEPTA, CategoriaRecepta } from '../../models/recepta.model';
 import { FiltresRecepta } from '../../models/filtres-recepta.model';
 
@@ -16,7 +16,17 @@ export class ReceptaFiltersComponent {
 
   @Output() filtresAplicats = new EventEmitter<FiltresRecepta>();
 
-  aplicar(): void {
+  aplicar(formulari: NgForm): void {
+    if (formulari.invalid) {
+      return;
+    }
     this.filtresAplicats.emit({ text: this.text.trim(), categoria: this.categoria });
+  }
+
+  restablir(formulari: NgForm): void {
+    formulari.resetForm({ text: '', categoria: '' });
+    this.text = '';
+    this.categoria = '';
+    this.filtresAplicats.emit({ text: '', categoria: '' });
   }
 }

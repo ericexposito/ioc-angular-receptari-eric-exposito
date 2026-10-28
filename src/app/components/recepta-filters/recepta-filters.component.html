@@ -1,18 +1,40 @@
-<form class="filtres" (ngSubmit)="aplicar()">
-    <div class="camp">
-      <label for="filtre-text">Cerca per text</label>
-      <input id="filtre-text" name="text" type="text" [(ngModel)]="text" placeholder="Ex.: crema">
-    </div>
-  
-    <div class="camp">
-      <label for="filtre-categoria">Categoria</label>
-      <select id="filtre-categoria" name="categoria" [(ngModel)]="categoria">
-        <option value="">Totes</option>
-        @for (cat of categories; track cat) {
-          <option [value]="cat">{{ cat }}</option>
+<form class="filtres" #filtresForm="ngForm" (ngSubmit)="aplicar(filtresForm)">
+  <div class="camp">
+    <label for="filtre-text">Cerca per text</label>
+    <input
+      id="filtre-text"
+      name="text"
+      type="text"
+      [(ngModel)]="text"
+      #textCtrl="ngModel"
+      required
+      minlength="3"
+      autocomplete="off"
+      placeholder="Ex.: crema">
+
+    @if (textCtrl.invalid && (textCtrl.dirty || textCtrl.touched)) {
+      <p class="error" role="alert">
+        @if (textCtrl.errors?.['required']) {
+          El text de cerca és obligatori.
+        } @else if (textCtrl.errors?.['minlength']) {
+          Cal escriure com a mínim 3 caràcters.
         }
-      </select>
-    </div>
-  
-    <button type="submit">Aplica filtres</button>
+      </p>
+    }
+  </div>
+
+  <div class="camp">
+    <label for="filtre-categoria">Categoria</label>
+    <select id="filtre-categoria" name="categoria" [(ngModel)]="categoria">
+      <option value="">Totes</option>
+      @for (cat of categories; track cat) {
+        <option [value]="cat">{{ cat }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="accions">
+    <button type="submit" [disabled]="filtresForm.invalid">Aplica filtres</button>
+    <button type="button" (click)="restablir(filtresForm)">Restableix</button>
+  </div>
 </form>

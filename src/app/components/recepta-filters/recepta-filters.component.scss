@@ -1,12 +1,7 @@
-:host {
-  display: block;
-  min-width: 0;
-}
-
 .filtres {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 16px;
   padding: 16px;
   background: #ffffff;
@@ -30,7 +25,30 @@ select {
   min-width: 200px;
 }
 
+input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty {
+  border: 2px solid #b00020;
+}
+
+.error {
+  margin: 0;
+  color: #b00020;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.accions {
+  display: flex;
+  gap: 8px;
+  align-self: flex-end;
+}
+
 button {
   padding: 8px 16px;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
