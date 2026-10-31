@@ -11,7 +11,11 @@
     <p class="destacada">★ Recepta destacada</p>
   }
 
-  <button type="button" (click)="onSeleccionar()">
+  <button
+    type="button"
+    [attr.aria-pressed]="seleccionada"
+    [attr.aria-label]="(seleccionada ? 'Seleccionada: ' : 'Veure detall de ') + recepta.titol"
+    (click)="onSeleccionar()">
     {{ seleccionada ? 'Seleccionada' : 'Veure detall' }}
   </button>
 </article>

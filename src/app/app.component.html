@@ -1,3 +1,5 @@
+<a class="salt-contingut" href="#contingut-principal">Salta al contingut principal</a>
+
 <div class="contenidor">
   <header class="capcalera">
     <h1>{{ nomApp }}</h1>
@@ -7,7 +9,7 @@
   <app-recepta-filters (filtresAplicats)="onFiltresAplicats($event)" />
 
   <div class="cos">
-    <main id="contingut-principal" class="principal">
+    <main id="contingut-principal" class="principal" tabindex="-1">
       <p class="comptador" role="status">
         @if (receptesFiltrades.length === 1) {
           1 recepta trobada
@@ -28,8 +30,8 @@
       }
     </main>
 
-    <aside class="lateral">
-      <h2>Detall de la recepta</h2>
+    <aside class="lateral" aria-labelledby="titol-detall" aria-live="polite">
+      <h2 id="titol-detall">Detall de la recepta</h2>
 
       @if (receptaActual) {
         <article class="detall">

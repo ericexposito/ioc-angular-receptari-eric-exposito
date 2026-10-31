@@ -1,3 +1,20 @@
+.salt-contingut {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  padding: 8px 16px;
+  background: #1a5fb4;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.salt-contingut:focus {
+  left: 16px;
+  top: 16px;
+}
+
 .contenidor {
   display: flex;
   flex-direction: column;
@@ -49,6 +66,7 @@
 
 .lateral {
   flex: 1 1 260px;
+  min-width: 0;
   align-self: flex-start;
   padding: 16px;
   background: #fff8e1;
@@ -102,4 +120,17 @@ dd {
 .destacada {
   color: #7a4b00;
   font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .contenidor {
+    gap: 16px;
+    margin: 8px;
+    padding: 12px;
+  }
+
+  .principal,
+  .lateral {
+    flex: 1 1 100%;
+  }
 }

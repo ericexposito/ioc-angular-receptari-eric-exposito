@@ -10,10 +10,12 @@
       required
       minlength="3"
       autocomplete="off"
-      placeholder="Ex.: crema">
+      placeholder="Ex.: crema"
+      [attr.aria-invalid]="textCtrl.invalid && (textCtrl.dirty || textCtrl.touched)"
+      [attr.aria-describedby]="textCtrl.invalid && (textCtrl.dirty || textCtrl.touched) ? 'error-text' : null">
 
     @if (textCtrl.invalid && (textCtrl.dirty || textCtrl.touched)) {
-      <p class="error" role="alert">
+      <p id="error-text" class="error" role="alert">
         @if (textCtrl.errors?.['required']) {
           El text de cerca és obligatori.
         } @else if (textCtrl.errors?.['minlength']) {
